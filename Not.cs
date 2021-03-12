@@ -66,7 +66,7 @@ namespace Not
             {
                 return number.ToString(); // возвращаем без изменений
             }
-            string temp = notation.ToString(); 
+            string temp = number.ToString();
             int  n = temp.Length; //длина заданного числа
             int dote_position = n; // позиции точки изначально задаем длину строки
             string wholePart = ""; //целая часть

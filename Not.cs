@@ -66,7 +66,7 @@ namespace Not
             {
                 return number.ToString(); // возвращаем без изменений
             }
-            string temp = notation.ToString(); 
+            string temp = number.ToString();
             int  n = temp.Length; //длина заданного числа
             int dote_position = n; // позиции точки изначально задаем длину строки
             string wholePart = ""; //целая часть
@@ -127,22 +127,22 @@ namespace Not
             }
             else 
             {
-                return wholePart + fractionalPart; //иначе складываем два ч
+                return wholePart + fractionalPart; //иначе складываем обе части
             }
         }
 
-        public static string NotationToAny(int from, int to, string number)
+        public static string NotationToAny(int from, int to, string number) //перевод из одной с.с. в другую
         {
-            if (number == "")
+            if (number == "") // пустая ли строка 
             {
                 throw StringIsEmpty;
             }
-            if ((from < 2 || from > 36) || (to < 2 || to > 36))
+            if ((from < 2 || from > 36) || (to < 2 || to > 36)) //не вышли ли за пределы
             {
                 throw OutOfNotation;
             }
-            int n = number.Length;
-            for (int i = 0; i < n; i++)
+            int n = number.Length; 
+            for (int i = 0; i < n; i++) //проверка на корректность числа
             {
                 if (number[i] != '.' && number[i] != ',')
                 {
@@ -152,7 +152,8 @@ namespace Not
                     }
                 }
             }
-           return Notationfrom10ToAny(to, Notation_to10(from, number));
+            if (from == to) return number; //если с.с. одинаковые вернуть без имзменений
+            else return Notationfrom10ToAny(to, Notation_to10(from, number)); 
            
         }
     }
